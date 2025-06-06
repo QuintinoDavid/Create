@@ -99,6 +99,7 @@
     "create:deployer",
     "create:portable_storage_interface",
     "create:redstone_contact",
+    "create:redstone_counter",
     "create:elevator_contact",
     "create:mechanical_harvester",
     "create:mechanical_plough",

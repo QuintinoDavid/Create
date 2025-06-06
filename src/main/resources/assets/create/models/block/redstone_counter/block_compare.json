@@ -1,0 +1,26 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"textures": {
+		"top": "create:block/counter_top_compare",
+		"bottom": "create:block/counter_bottom",
+		"front": "create:block/counter_front",
+		"back": "create:block/counter_back",
+		"side": "create:block/counter_side",
+		"particle": "create:block/counter_side"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 16, 16],
+			"faces": {
+				"up":    { "texture": "#top" },
+				"down":  { "texture": "#bottom" },
+				"north": { "texture": "#front" },
+				"south": { "texture": "#back" },
+				"east":  { "texture": "#side" },
+				"west":  { "texture": "#side" }
+			}
+		}
+	]
+}

@@ -217,6 +217,7 @@ import com.simibubi.create.content.redstone.analogLever.AnalogLeverBlock;
 import com.simibubi.create.content.redstone.contact.ContactMovementBehaviour;
 import com.simibubi.create.content.redstone.contact.RedstoneContactBlock;
 import com.simibubi.create.content.redstone.contact.RedstoneContactItem;
+import com.simibubi.create.content.redstone.counter.RedstoneCounterBlock;
 import com.simibubi.create.content.redstone.deskBell.DeskBellBlock;
 import com.simibubi.create.content.redstone.diodes.AbstractDiodeGenerator;
 import com.simibubi.create.content.redstone.diodes.BrassDiodeBlock;
@@ -1394,6 +1395,18 @@ public class AllBlocks {
 			.onRegister(movementBehaviour(new ContactMovementBehaviour()))
 			.blockstate((c, p) -> p.directionalBlock(c.get(), AssetLookup.forPowered(c, p)))
 			.item(RedstoneContactItem::new)
+			.tag(AllItemTags.CONTRAPTION_CONTROLLED.tag)
+			.transform(customItemModel("_", "block"))
+			.register();
+
+	public static final BlockEntry<RedstoneCounterBlock> REDSTONE_COUNTER =
+		REGISTRATE.block("redstone_counter", RedstoneCounterBlock::new)
+			.initialProperties(SharedProperties::stone)
+			.properties(p -> p.mapColor(MapColor.WOOD))
+			.transform(axeOrPickaxe())
+			.blockstate((c, p) -> p.directionalBlock(c.get(), AssetLookup.forPowered(c, p)))
+			.onRegister(movementBehaviour(new ContactMovementBehaviour()))
+			.item()
 			.tag(AllItemTags.CONTRAPTION_CONTROLLED.tag)
 			.transform(customItemModel("_", "block"))
 			.register();

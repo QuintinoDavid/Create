@@ -208,6 +208,7 @@ import com.simibubi.create.content.redstone.nixieTube.NixieTubeBlockEntity;
 import com.simibubi.create.content.redstone.nixieTube.NixieTubeRenderer;
 import com.simibubi.create.content.redstone.smartObserver.SmartObserverBlockEntity;
 import com.simibubi.create.content.redstone.thresholdSwitch.ThresholdSwitchBlockEntity;
+import com.simibubi.create.content.redstone.counter.RedstoneCounterBlockEntity;
 import com.simibubi.create.content.schematics.cannon.SchematicannonBlockEntity;
 import com.simibubi.create.content.schematics.cannon.SchematicannonRenderer;
 import com.simibubi.create.content.schematics.cannon.SchematicannonVisual;
@@ -838,6 +839,12 @@ public class AllBlockEntityTypes {
 	public static final BlockEntityEntry<ThresholdSwitchBlockEntity> THRESHOLD_SWITCH = REGISTRATE
 		.blockEntity("stockpile_switch", ThresholdSwitchBlockEntity::new)
 		.validBlocks(AllBlocks.THRESHOLD_SWITCH)
+		.renderer(() -> SmartBlockEntityRenderer::new)
+		.register();
+
+	public static final BlockEntityEntry<RedstoneCounterBlockEntity> REDSTONE_COUNTER = REGISTRATE
+		.blockEntity("redstone_counter", RedstoneCounterBlockEntity::new)
+		.validBlocks(AllBlocks.REDSTONE_COUNTER)
 		.renderer(() -> SmartBlockEntityRenderer::new)
 		.register();
 
