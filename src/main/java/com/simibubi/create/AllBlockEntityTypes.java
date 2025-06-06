@@ -20,6 +20,8 @@ import com.simibubi.create.content.contraptions.chassis.StickerBlockEntity;
 import com.simibubi.create.content.contraptions.chassis.StickerRenderer;
 import com.simibubi.create.content.contraptions.chassis.StickerVisual;
 import com.simibubi.create.content.contraptions.elevator.ElevatorContactBlockEntity;
+import com.simibubi.create.content.redstone.singer.RedstoneSingerBlockEntity;	
+import com.simibubi.create.content.redstone.telegraph.TelegraphBlockEntity;
 import com.simibubi.create.content.contraptions.elevator.ElevatorPulleyBlockEntity;
 import com.simibubi.create.content.contraptions.elevator.ElevatorPulleyRenderer;
 import com.simibubi.create.content.contraptions.elevator.ElevatorPulleyVisual;
@@ -594,6 +596,18 @@ public class AllBlockEntityTypes {
 	public static final BlockEntityEntry<ElevatorContactBlockEntity> ELEVATOR_CONTACT =
 		REGISTRATE.blockEntity("elevator_contact", ElevatorContactBlockEntity::new)
 			.validBlocks(AllBlocks.ELEVATOR_CONTACT)
+			.register();
+	
+	public static final BlockEntityEntry<RedstoneSingerBlockEntity> REDSTONE_SINGER =
+		REGISTRATE.blockEntity("redstone_singer", RedstoneSingerBlockEntity::new)
+		.validBlocks(AllBlocks.REDSTONE_SINGER)
+   		.renderer(() -> SmartBlockEntityRenderer::new)
+   		.register();
+
+	public static final BlockEntityEntry<TelegraphBlockEntity> REDSTONE_TELEGRAPH =
+		REGISTRATE.blockEntity("redstone_telegraph", TelegraphBlockEntity::new)
+			.validBlocks(AllBlocks.TELEGRAPH)
+			.renderer(() -> SmartBlockEntityRenderer::new)
 			.register();
 
 	public static final BlockEntityEntry<ChassisBlockEntity> CHASSIS = REGISTRATE

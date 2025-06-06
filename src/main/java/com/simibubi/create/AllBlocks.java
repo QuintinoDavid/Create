@@ -217,6 +217,8 @@ import com.simibubi.create.content.redstone.analogLever.AnalogLeverBlock;
 import com.simibubi.create.content.redstone.contact.ContactMovementBehaviour;
 import com.simibubi.create.content.redstone.contact.RedstoneContactBlock;
 import com.simibubi.create.content.redstone.contact.RedstoneContactItem;
+import com.simibubi.create.content.redstone.singer.RedstoneSingerBlock;
+import com.simibubi.create.content.redstone.telegraph.TelegraphBlock;
 import com.simibubi.create.content.redstone.deskBell.DeskBellBlock;
 import com.simibubi.create.content.redstone.diodes.AbstractDiodeGenerator;
 import com.simibubi.create.content.redstone.diodes.BrassDiodeBlock;
@@ -1384,6 +1386,26 @@ public class AllBlocks {
 			.item()
 			.tag(AllItemTags.CONTRAPTION_CONTROLLED.tag)
 			.transform(customItemModel())
+			.register();
+
+	public static final BlockEntry<RedstoneSingerBlock> REDSTONE_SINGER =
+		REGISTRATE.block("redstone_singer", RedstoneSingerBlock::new)
+			.initialProperties(SharedProperties::stone)
+			.properties(p -> p.mapColor(MapColor.COLOR_RED))
+			.transform(pickaxeOnly())
+			.blockstate((c, p) -> p.horizontalBlock(c.get(), AssetLookup.partialBaseModel(c, p)))
+			.simpleItem()
+			.register();
+
+	public static final BlockEntry<TelegraphBlock> TELEGRAPH =
+		REGISTRATE.block("telegraph", TelegraphBlock::new)
+			.initialProperties(SharedProperties::softMetal)
+			.properties(p -> p.mapColor(MapColor.TERRACOTTA_BROWN)
+				.noOcclusion())
+			.transform(pickaxeOnly())
+			.blockstate((c, p) -> p.horizontalBlock(c.get(), AssetLookup.partialBaseModel(c, p)))
+			.addLayer(() -> RenderType::cutoutMipped)
+			.simpleItem()
 			.register();
 
 	public static final BlockEntry<RedstoneContactBlock> REDSTONE_CONTACT =
