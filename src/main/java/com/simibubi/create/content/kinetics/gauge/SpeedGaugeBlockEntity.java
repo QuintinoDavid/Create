@@ -8,6 +8,7 @@ import org.jetbrains.annotations.Nullable;
 import com.simibubi.create.compat.computercraft.AbstractComputerBehaviour;
 import com.simibubi.create.compat.computercraft.ComputerCraftProxy;
 import com.simibubi.create.content.kinetics.base.IRotate.SpeedLevel;
+import com.simibubi.create.content.redstone.thresholdSwitch.ThresholdSwitchObservable;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import com.simibubi.create.foundation.utility.CreateLang;
 import com.simibubi.create.infrastructure.config.AllConfigs;
@@ -17,13 +18,14 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 
-public class SpeedGaugeBlockEntity extends GaugeBlockEntity {
+public class SpeedGaugeBlockEntity extends GaugeBlockEntity implements ThresholdSwitchObservable {
 
 	public AbstractComputerBehaviour computerBehaviour;
 
@@ -92,6 +94,26 @@ public class SpeedGaugeBlockEntity extends GaugeBlockEntity {
 	public void invalidateCaps() {
 		super.invalidateCaps();
 		computerBehaviour.removePeripheral();
+	}
+
+	@Override
+	public int getMaxValue() {
+		return (int) com.simibubi.create.infrastructure.config.AllConfigs.server().kinetics.maxRotationSpeed.get().floatValue();
+	}
+
+	@Override
+	public int getMinValue() {
+		return 0;
+	}
+
+	@Override
+	public int getCurrentValue() {
+		return (int) Math.abs(getSpeed());
+	}
+
+	@Override
+	public MutableComponent format(int value) {
+		return Component.literal(value + " RPM");
 	}
 
 }
